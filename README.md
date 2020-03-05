@@ -107,13 +107,13 @@ Things you may want to cover:
 - belongs_to :user		
 - belongs_to :item		
 
-# imagesテーブル		
+# item_imagesテーブル		
 |Column|Type|Options|
 |------|----|-------|	
 |image|text|null: false
 |item_id|integer	null: false, foreign_key: true|
 ### Association		
-- belongs_to :user			
+- belongs_to :item			
 
 # likesテーブル		
 |Column|Type|Options|
@@ -142,8 +142,8 @@ Things you may want to cover:
 |brand|string|	
 |status|string|null: false|
 |postage|string|null: false|
-|prefectures|string|null: false|
-|delivery_days|integer|null: false|
+|prefecture|string|null: false|
+|delivery_day|integer|
 |size|null: false|
 |price|integer|null: false|
 |buyer_id|integer|null: false, foreign_key: true|
