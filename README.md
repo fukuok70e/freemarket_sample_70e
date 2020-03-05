@@ -22,27 +22,17 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-|user_name|string|null: false, add_index: true|
 # usersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|null: false|
 |e-mail|string|null: false, unique: true|
 |password|string|null: false, unique: true|
-|user_id|integer|null: false, foreign_key: true|
-|username|string|null: false|
+|name|string|null: false|
 |furigana|string|null: false|
 |birthdate|integer|null: false|
-|destination_name|string|null: false|
-|destination_name_furigana|string|null: false|
-|postal_code|integer|null: false|
-|prefecture|string|null: false|
-|city|string|null: false|
-|building_name|string|
-|room_number|integer|
-|phone_number	integer	unique: true|
-|introduction	string	null: false|
-|image	text|
+|introduction|string|null: false|
+|image|text|
 ### Association
 - has_many :reviews
 - has_many :images
@@ -51,7 +41,23 @@ Things you may want to cover:
 - has_many :likes
 - has_many :points
 - has_many :profits
-- belongs_to :credit_card
+- has_one :credit_card
+- has_one :address
+
+# addressテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|name|string|null: false|
+|name_furigana|string|null: false|
+|postal_code|integer|null: false|
+|prefecture|string|null: false|
+|city|string|null: false|
+|building_name|string|
+|room_number|integer|
+|phone_number|integer|unique: true|
+### Association		
+- has_one :user		
 
 # reviewsテーブル
 |Column|Type|Options|
@@ -62,6 +68,7 @@ Things you may want to cover:
 |evaluation|string|null: false|
 ### Association
 - belongs_to :user
+- belongs_to :item	
 
 # pointsテーブル
 |Column|Type|Options|
@@ -88,7 +95,7 @@ Things you may want to cover:
 |effective_year|integer	null: false,unique: true|
 |security_code|integer	null: false,unique: true|
 ### Association	
-- belongs_to :user		
+- has_one :user	
 
 # commentsテーブル		
 |Column|Type|Options|
@@ -103,12 +110,10 @@ Things you may want to cover:
 # imagesテーブル		
 |Column|Type|Options|
 |------|----|-------|	
-|image	text	null: false
+|image|text|null: false
 |item_id|integer	null: false, foreign_key: true|
-|user_id|integer	null: false, foreign_key: true|
 ### Association		
-- belongs_to :user		
-- belongs_to :item		
+- belongs_to :user			
 
 # likesテーブル		
 |Column|Type|Options|
@@ -124,7 +129,6 @@ Things you may want to cover:
 |------|----|-------|	
 |ancestry|string|index true|
 |name|string|null: false,add_index: true|
-|item_id|integer|null: false, foreign_key: true|
 ### Association		
 - has_many :items		
 
@@ -147,5 +151,6 @@ Things you may want to cover:
 - has_many :comments		
 - has_many :likes		
 - has_many :images		
+- has_many :reviews
 - belongs_to :category	
 - belongs_to :user		
