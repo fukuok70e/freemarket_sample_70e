@@ -7,92 +7,85 @@
     .main-container__box
       .main-container__box__top
         会員情報入力
-      = form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', novalidate:"novalidate", local: true do |f|
-        = render "devise/shared/error_messages", resource: resource
-        .form-box  
-          .input-box
-            = f.label :nickname, "ニックネーム", class: 'input-label'
-            .require-input
-              必須
-            %br/ 
-            = f.text_field :nickname, class: 'input-default', placeholder: 'フリマ', size: '42%'  
-          .input-box
-            = f.label :email, "メールアドレス"
-            .require-input
-              必須
-            %br/ 
-            = f.email_field :email, class: 'input-default', placeholder: 'PC・携帯電話どちらでも可', size: '42%'
-          .input-box
-            = f.label :encrypted_password, "パスワード"
-            .require-input
-              必須
-            %br/ 
-            = f.password_field :encrypted_password, class: 'input-default', placeholder: '7文字以上の半角英数字', id: 'encrypted_password', size: '42%'
-            .f-infomation
-              *英字と数字の両方を含めて設定してください
-              %br/ 
-              %input#js-passcheck{type: "checkbox"}
-              %label{for: "js-passcheck"} パスワードを表示する
-              
-              
-              -# .display-password
-              -#   .checkbox
-
-
-              -#     = f.check_box :sex ,{}, "true", "false"
-              -#     = f.label :text, "パスワードを表示する"
-              -# .display-password__box 
-              -#   .display-password__box__area
-            .input-box
-              .identification-text
-                本人確認
-                .identification-text__content
-                  安心・安全にご利用いただくために、お客さまの本人
-                  %br/ 
-                  情報の登録にご協力ください。他のお客さまに公開さ
-                  %br/ 
-                  れることはありません。
-            .input-box
-              = f.label :name, "お名前(全角)"
-              .require-input
+      .user-box
+        = form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', novalidate:"novalidate", local: true do |f|
+          = render "devise/shared/error_messages", resource: resource
+          .form-box  
+            .input-box__nickname
+              = f.label :nickname, "ニックネーム", class: 'input-label'
+              %span.form-require 
                 必須
               %br/ 
-              = f.text_field :name, class: 'input-default', placeholder: '例)山田'
-              = f.text_field :name, class: 'input-default', placeholder: '例)太郎'
-            .input-box
-              = f.label :furigana, "お名前カナ(全角)"
-              .require-input
+              = f.text_field :nickname, class: 'input-default', placeholder: '  フリマ'
+            .input-box__email
+              = f.label :email, "メールアドレス"
+              %span.form-require 
                 必須
               %br/ 
-              = f.text_field :furigana, class: 'input-default', placeholder: '例)ヤマダ'
-              = f.text_field :furigana, class: 'input-default', placeholder: '例)タロウ'
-            .input-box
-              = f.label :birthdate, "生年月日"
-              .require-input
+              = f.email_field :email, class: 'input-default', placeholder: '  PC・携帯電話どちらでも可'
+            .input-box__password
+              = f.label :encrypted_password, "パスワード"
+              %span.form-require 
                 必須
               %br/ 
-              != sprintf(f.date_select(:birthday, prefix:'birthday',with_css_classes:'birthdate', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
-              .birthdate-text
-                ※ 本人情報は正しく入力してください。会員登録後、
+              = f.password_field :encrypted_password, class: 'input-default', placeholder: '  7文字以上の半角英数字', id: 'encrypted_password'
+              .f-infomation
+                *英字と数字の両方を含めて設定してください
                 %br/ 
-                修正するにはお時間を頂く場合があります。
+              .display-password
+                = f.check_box :sex ,{}, "true", "false"
+                = f.label :text, "  パスワードを表示する"
+              .input-box__identification
+                .content
+                  本人確認
+                  .text
+                    安心・安全にご利用いただくために、お客さまの
+                    %br/ 
+                    本人情報の登録にご協力ください。他のお客さま
+                    %br/ 
+                    に公開されることはありません。
+              .input-box__name
+                = f.label :name, "  お名前(全角)"
+                %span.form-require 
+                  必須
+                %br/ 
+                = f.text_field :name, class: 'input-default', placeholder: '  例)山田'
+                = f.text_field :name, class: 'input-default', placeholder: '  例)太郎'
+              .input-box__furigana
+                = f.label :furigana, "  お名前カナ(全角)"
+                %span.form-require 
+                  必須
+                %br/ 
+                = f.text_field :furigana, class: 'input-default', placeholder: '  例)ヤマダ'
+                = f.text_field :furigana, class: 'input-default', placeholder: '  例)タロウ'
+              .input-box__birthdate
+                = f.label :birthdate, " 生年月日"
+                %span.form-require 
+                  必須
+                %br/ 
+                != sprintf(f.date_select(:birthday, prefix:'birthday',with_css_classes:'birthdate', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
+                .birthdate-text
+                  ※ 本人情報は正しく入力してください。会員登録
+                  %br/ 
+                  後、修正するにはお時間を頂く場合があります。
 
-      
-            .input-box
-              .text__nextpage
-                「次へ進む」のボタンを押すことにより、
-                %br/
-                -# = link_to '利用規約' url= {"#"} 
-                -# に同意したものとみなします
-                = f.submit "次へ進む", class: 'btn-red'
-            .text__identity-information
-            = link_to  '本人情報の登録について', class: 'identity-information' do
+          
+          .nextpage
+            .nextpage__text
+              「次へ進む」のボタンを押すことにより、
+              = link_to '利用規約'
+              に同意したものとみなします
+            = f.submit '次へ進む', class: 'red-btn'
+          .text__identity-information
+            = link_to '本人情報の登録について', class: 'identity-information' do
               = icon('fa', 'arrow', class: 'icon')
-            .input-box__recaptcha
+          .recaptcha
+            .recaptcha-text
               This site is protected by reCAPTCHA and the Google 
-              %br/
               = link_to 'Privacy Policy', class: 'Privacy Policy'
+              and
               = link_to 'Terms of Service', class: 'Terms of Service'
+              apply.
   .footer
   
     %ul
@@ -100,6 +93,7 @@
         = link_to 'プライバシーポリシー' 
       %li
         = link_to 'FURIMA' 
+      %br/ 
       %li
         = link_to '特定商取引に関する表記' 
     .footer__logo
