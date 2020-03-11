@@ -26,8 +26,8 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|null: false|
-|e-mail|string|null: false|
-|encrypted_password|string|null: false|
+|e-mail|string|null: false, unique: true|
+|password|string|null: false, unique: true|
 |name|string|null: false|
 |furigana|string|null: false|
 |birthdate|integer|null: false|
@@ -56,8 +56,8 @@ Things you may want to cover:
 |building_name|string|
 |room_number|integer|
 |phone_number|integer|unique: true|
-### Association
-- belongs_to :user
+### Association		
+- belongs_to :user	
 
 # reviewsテーブル
 |Column|Type|Options|
@@ -68,89 +68,89 @@ Things you may want to cover:
 |evaluation|string|null: false|
 ### Association
 - belongs_to :user
-- belongs_to :item
+- belongs_to :item	
 
 # pointsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
 |point|integer|
-### Association
+### Association	
 - belongs_to :user
 
 # profitsテーブル
 |Column|Type|Options|
-|------|----|-------|
+|------|----|-------|		
 |user_id|integer|null: false, foreign_key: true|
 |amount|integer|
-### Association
-- belongs_to :user
+### Association	
+- belongs_to :user		
 
-# credit_cardsテーブル
+# credit_cardsテーブル		
 |Column|Type|Options|
-|------|----|-------|
+|------|----|-------|	
 |user_id|integer|null: false, foreign_key: true|
 |card_number|integer|null: false,unique: true|
 |effective_month|integer|null: false,unique: true|
-|effective_year|integer null: false,unique: true|
-|security_code|integer null: false,unique: true|
-### Association
+|effective_year|integer	null: false,unique: true|
+|security_code|integer	null: false,unique: true|
+### Association	
 - belongs_to :user
 
-# commentsテーブル
+# commentsテーブル		
 |Column|Type|Options|
-|------|----|-------|
+|------|----|-------|	
 |user_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
 |text|text|null: false|
-### Association
-- belongs_to :user
-- belongs_to :item
+### Association		
+- belongs_to :user		
+- belongs_to :item		
 
-# item_imagesテーブル
+# item_imagesテーブル		
 |Column|Type|Options|
-|------|----|-------|
+|------|----|-------|	
 |image|text|null: false
-|item_id|integer null: false, foreign_key: true|
-### Association
-- belongs_to :item
+|item_id|integer	null: false, foreign_key: true|
+### Association		
+- belongs_to :item			
 
-# likesテーブル
+# likesテーブル		
 |Column|Type|Options|
-|------|----|-------|
+|------|----|-------|	
 |user_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
-### Association
-- belongs_to :user
+### Association		
+- belongs_to :user	
 - belongs_to :item
 
-# categorysテーブル
+# categorysテーブル		
 |Column|Type|Options|
-|------|----|-------|
+|------|----|-------|	
 |ancestry|string|index true|
 |name|string|null: false,add_index: true|
-### Association
-- has_many :items
+### Association		
+- has_many :items		
 
-# itemsテーブル
+# itemsテーブル		
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false,foreign_key: true|
 |name|string|null: false,add_index: true|
 |description|text|null: false|
 |category_id|string|null: false,add_index: true|
-|brand|string|
+|brand|string|	
 |status|string|null: false|
 |size|null: false|
 |price|integer|null: false|
-### Association
-- has_many :comments
-- has_many :likes
-- has_many :images
+### Association		
+- has_many :comments		
+- has_many :likes		
+- has_many :images		
 - has_many :reviews
 - has_one :delivery
-- belongs_to :category
-- belongs_to :user
+- belongs_to :category	
+- belongs_to :user	
 
 # deliveriesテーブル
 |Column|Type|Options|
@@ -160,5 +160,5 @@ Things you may want to cover:
 |postage|string|null: false|
 |prefecture|string|null: false|
 |day|integer|
-### Association
+### Association		
 - belongs_to :item
