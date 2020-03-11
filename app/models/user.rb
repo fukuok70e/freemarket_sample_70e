@@ -6,11 +6,16 @@ class User < ApplicationRecord
 
   with_options if: :user_signed_in? do |user|
     user.validates :nickname, presence: true
-    user.validates :email, presence: true
-    user.validates :encrypted_password, presence: true
-    user.validates :name, presence: true
+    # user.validates :email, presence: true
+    # user.validates :encrypted_password, presence: true
+    user.validates :familyname, presence: true
+    user.validates :firstname, presence: true
+    user.validates :familyname_kana, presence: true
+    user.validates :firstname_kana, presence: true
     user.validates :furigana, presence: true
-    user.validates :birthdate, presence: true
+    user.validates :birth_year, presence: true
+    user.validates :birth_month, presence: true
+    user.validates :birth_day, presence: true
     user.validates :introduction, presence: true
     user.validates :image, presence: true
   end
@@ -24,5 +29,4 @@ class User < ApplicationRecord
   has_many :profits
   has_one :credit_card
   has_one :address
-
 end

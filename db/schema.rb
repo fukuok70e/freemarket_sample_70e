@@ -16,9 +16,13 @@ ActiveRecord::Schema.define(version: 2020_03_06_041329) do
     t.string "nickname", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "name", default: "", null: false
-    t.string "furigana", default: "", null: false
-    t.integer "birthdate", null: false
+    t.string "familyname", default: "", null: false
+    t.string "firstname", default: "", null: false
+    t.string "familyname_kana", default: "", null: false
+    t.string "firstname_kana", default: "", null: false
+    t.integer "birth_year", null: false
+    t.integer "birth_month", null: false
+    t.integer "birth_day", null: false
     t.string "introduction", default: "", null: false
     t.string "image", default: "", null: false
     t.string "reset_password_token"

@@ -2,21 +2,6 @@
   box-sizing: border-box;
 }
 
-// @mixin input {
-
-//   [type="text"] {
-//     width: 100px;
-//     height: 40px;
-//   }
-  
-//   .input-default {
-//     @include input;
-//   }
-// }
-
-
-
-
 body {
   position: relative;
   min-height: 100%;
@@ -27,34 +12,35 @@ body {
   background: rgb(245, 245, 245);
 }
 
+
 .container {
   padding: 0 0 220px;
   .top-container {
     text-align: center;
-    h1.icon {
-      display: inline-block;
-      margin: 11px 0 12px;
-      &:hover {
-        opacity: 1;
-      }
-      a {
-        width: 140px;
-        display: inline-block;
-        height: 40px;
-        line-height: 40px;
-        margin: 0 8px 0 0;
-        cursor: pointer;
-        .header__logo {
-          vertical-align: bottom;
-          height:40px;
-          width: 140px;
-  
-        }
-      }
-    }    
-    
+    margin-bottom: 10px;
   }
+  h1.icon {
+    display: inline-block;
+    margin: 11px 0 12px;
+    &:hover {
+      opacity: 1;
+    }
+    a {
+      width: 140px;
+      display: inline-block;
+      height: 40px;
+      line-height: 40px;
+      margin: 0 8px 0 0;
+      cursor: pointer;
+      .header__logo {
+        vertical-align: bottom;
+        height:40px;
+        width: 140px;
 
+      }
+    }
+  }   
+  
   .main-container {
     display: block;
     &__box {
@@ -127,6 +113,27 @@ body {
                 width: 100%;
                 margin: 8px 0 0;
               }
+              .display-password {
+                margin: 16px 0 0;
+              }
+            }
+            .input-box__password-confirmation {
+              input[type="password"] {
+                width: 300px;
+                height: 50px;
+                margin: 10px 0;
+              }
+              .input-label {
+                font-weight: 600;
+              }
+              span.form-require {
+                color: white;
+                background-color:red;
+              }
+              .input-deflut {
+                width: 100%;
+                margin: 8px 0 0;
+              }
               .f-infomation {
                 color: #888;
                 
@@ -181,11 +188,6 @@ body {
               }
             }
             .input-box__birthdate {
-              input[type="number"] {
-                width: 100px;
-                height: 50px;
-                margin: 15px 0;
-              }
               .input-label {
                 font-weight: 600;
               }
@@ -197,8 +199,12 @@ body {
                 width: 100%;
                 margin: 8px 0 0;
               }
+              .year, .month, .day{
+                width: 85px;
+                height: 50px;
+                margin: 15px 0;
+              }
             }
-            
             .birthdate-text {
               margin: 10px 0 20px;
               color: #888;
@@ -228,17 +234,11 @@ body {
           .identity-information {
             color: #0099e8;
             text-decoration: none;
-            // .icon {
-
-            // }
           }
         }
-      
       }
     }
   }
-  // .main-conttainerの閉じタグ
-  
   .footer {
     position: absolute;
     right: 0px;
@@ -246,13 +246,14 @@ body {
     left: 0px;
     z-index: 1;
     height: 250px;
-    padding: 40px 450px;
-   
+    width: 100%;
+    padding: 40px 420px;
+    text-align: center;
     ul {
+      padding: 20px 100px 20px;
+      text-align: center;
       list-style-type: none;
-      
       display: flex;
-     
       li {
         display: inline-block;
          margin: 0 0 0 16px;
@@ -289,10 +290,10 @@ body {
           p {
             text-align: center;
             font-size: 14px;
+            padding-top: 10px;
           }
         }
       }  
     }
   }
 }
-// containerの閉じタ
