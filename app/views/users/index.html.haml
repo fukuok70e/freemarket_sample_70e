@@ -1,11 +1,8 @@
 .wrapper
-!!!
-%html
-%body
   .single-container
     %header.single-header
       %h
-        %a{:href => "https//www.mercari.com/jp"}
+        = link_to('https//www.mercari.com/jp')
         = image_tag 'logo.png', alt: 'aaaa', height: '49', width: '185', class: ""
     %main.single-main
       %section.l-single-container
