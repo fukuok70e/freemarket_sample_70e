@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+%body
+  .sigle-container
+    .single-head
+      %h1
+        %a{:href => "https//www.mercari.com/jp"}
+        = image_tag 'logo.png', alt: 'aaaa', height: '49', width: '185', class: ""
+    .single-main
+      .login-panel
+        .login-no-accout
+          %pアカウントをお持ちでない方はこちらへ
+          = link_to('新規会員登録', ) do
+            = icon('fab', '#',  class: "new")
+            新規会員登録
+        .login-form-inner
+          = link_to "https://www.facebook.com/", class: "kari__one" do
+            = icon('fab', 'facebook-square',  class: "kari")
+            Facebookで登録する
+          = link_to "https://www.google.com/", class: "kari__second" do
+            = icon('fab', 'google',  class: "karikarikari")
+            Googleで登録する
+        .login-form-inner
+          .form-group
+            = form_with url: "#" do |form|
+              = form.text_field :name
+          .form-group
+            = form_with url: "#" do |form|
+              = form.text_field :name 
+          .form-group
+            .g-recaptha
+              .style
+            .login
+            = button_tag type: "submit" do
+              投稿  
+            = link_to('パスワードのお忘れの方', {})
+        %footer.single-footer
+          %nav
+            %ul.cleafix
+              %il
+                = link_to "プライバシーポリシー", "#", class: "privacy"
+              %li
+                = link_to "メルカリ利用規約", "#", class: "userrule"
+              %li
+                = link_to "特定商取引に関する表記", "#", class: "taade"
+            %a.single-footer-logo{:href => "https://www.mercari.com/jp/"}
+              .footer-img
+                = image_tag 'logo.png', alt: 'aaaa', height: '49', width: '185', class: 'logo'
+            %p
+              %small© Furima, Inc.
